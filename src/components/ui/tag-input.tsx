@@ -3,60 +3,7 @@ import { X, Plus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-
-// Common business types for suggestions
-export const BUSINESS_TYPE_SUGGESTIONS = [
-  'Restaurants',
-  'Coffee Shops',
-  'Dentists',
-  'Doctors',
-  'Lawyers',
-  'Real Estate Agents',
-  'Insurance Agents',
-  'Accountants',
-  'Hair Salons',
-  'Barber Shops',
-  'Gyms',
-  'Yoga Studios',
-  'Auto Repair',
-  'Car Dealerships',
-  'Plumbers',
-  'Electricians',
-  'HVAC',
-  'Roofing',
-  'Landscaping',
-  'Cleaning Services',
-  'Pet Groomers',
-  'Veterinarians',
-  'Chiropractors',
-  'Physical Therapists',
-  'Massage Therapists',
-  'Nail Salons',
-  'Spas',
-  'Hotels',
-  'Motels',
-  'Wedding Venues',
-  'Photographers',
-  'Florists',
-  'Bakeries',
-  'Caterers',
-  'Event Planners',
-  'Marketing Agencies',
-  'Web Design',
-  'IT Services',
-  'Staffing Agencies',
-  'Tutoring Services',
-  'Daycare',
-  'Senior Care',
-  'Home Health Care',
-  'Pharmacies',
-  'Optical Stores',
-  'Jewelry Stores',
-  'Furniture Stores',
-  'Appliance Stores',
-  'Electronics Stores',
-  'Clothing Stores',
-];
+import { BUSINESS_TYPE_SUGGESTIONS } from '@/lib/constants';
 
 interface TagInputProps {
   value: string[];
