@@ -6,20 +6,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-5-purple?style=flat-square&logo=vite)](https://vitejs.dev)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?style=flat-square&logo=postgresql)](https://www.postgresql.org)
-[![Status](https://img.shields.io/badge/Status-Active%20Development-blue?style=flat-square)](#)
 
-> **Stop Manual Prospecting. Start Scaling Outreach.**
-> 
-> Open-source B2B lead finder and outreach automation platform. Find business contacts from Google Maps and professional networks, manage leads, track outreach, and close deals. Self-hosted, free, production-ready.
-
-## Why B2B Lead Finder?
-
-- **🔍 Built-in Scrapers** - Google Maps & LinkedIn lead extraction without external tools
-- **📊 Full CRM** - Lead management, notes, tags, status tracking, and more
-- **🚀 No Login Required** - LinkedIn scraping via Google/DuckDuckGo (no account needed)
-- **💾 Self-Hosted** - Your data stays on your servers
-- **🆓 100% Free** - MIT licensed, no hidden costs
-- **⚡ Production Ready** - Deploy in minutes with Docker or manual setup
+Open-source B2B lead generation and outreach automation platform. Extract business contacts from Google Maps and professional networks, manage leads in a full-featured CRM, track outreach campaigns, and close deals. Self-hosted, free, and production-ready.
 
 ---
 
@@ -27,7 +15,6 @@
 
 - [Quick Start](#quick-start)
 - [Features](#features)
-- [Screenshots](#screenshots)
 - [Use Cases](#use-cases)
 - [Technology Stack](#technology-stack)
 - [Scrapers](#scrapers)
@@ -38,16 +25,17 @@
 - [FAQ](#faq)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [Support](#support--contact)
+- [License](#license)
 
 ---
 
 ## Quick Start
 
 ### Prerequisites
-- **Node.js** v18 or higher
-- **PostgreSQL** v14 or higher
-- **npm**, **yarn**, or **bun** package manager
+
+- Node.js v18 or higher
+- PostgreSQL v14 or higher
+- npm, yarn, or bun package manager
 
 ### Installation
 
@@ -68,17 +56,18 @@ cp .env.example .env
 # Initialize database
 psql -U postgres -d your_database -f server/db/schema.sql
 
-# Start development server (frontend + backend)
+# Start development server
 npm run dev
 ```
 
-Open **http://localhost:8080** in your browser. CRM is live!
+Open **http://localhost:8080** in your browser.
 
 ---
 
 ## Features
 
-### 🔍 Google Maps Scraper
+### Google Maps Scraper
+
 - Search any business type in any location
 - Extract business name, phone, email, website, address
 - Rating and review count extraction
@@ -86,7 +75,8 @@ Open **http://localhost:8080** in your browser. CRM is live!
 - Export results to CSV/JSON
 - Real-time progress tracking
 
-### 🔗 LinkedIn Scraper (Dual Mode)
+### LinkedIn Scraper (Dual Mode)
+
 - **Google-based Mode** - No login required, uses search engines to find profiles
 - **Login-based Mode** - More detailed data with LinkedIn session
 - Search for people by job title, keywords, location
@@ -94,8 +84,9 @@ Open **http://localhost:8080** in your browser. CRM is live!
 - Extract name, headline, company, profile URL
 - Auto-import to CRM as leads
 
-### 📋 Lead Management
-- Full lead lifecycle tracking (New → Contacted → Replied → Qualified → Closed)
+### Lead Management
+
+- Full lead lifecycle tracking (New, Contacted, Replied, Qualified, Closed)
 - Source tracking (Google Maps, LinkedIn, CSV import, Manual)
 - Custom tags for categorization
 - Notes with timestamps
@@ -103,100 +94,67 @@ Open **http://localhost:8080** in your browser. CRM is live!
 - Bulk actions (delete, status update)
 - Search and filtering
 
-### 📈 Analytics Dashboard
+### Analytics Dashboard
+
 - Total leads by source
 - Lead status distribution
 - Conversion tracking
 - Recent activity feed
 
-### 🔌 Integrations Page
-- Connect LinkedIn account for enhanced scraping
-- Session management
-- API status monitoring
-
----
-
-## Screenshots
-
-<details>
-<summary>📊 Dashboard</summary>
-
-The main dashboard shows key metrics, recent leads, and quick actions.
-
-</details>
-
-<details>
-<summary>👥 Leads Management</summary>
-
-Full-featured leads table with filtering, bulk actions, and detailed lead profiles.
-
-</details>
-
-<details>
-<summary>🔍 Google Maps Scraper</summary>
-
-Configure scraping jobs, monitor progress, and auto-import leads.
-
-</details>
-
-<details>
-<summary>🔗 LinkedIn Scraper</summary>
-
-Dual-mode LinkedIn scraping with keyword tags and location autocomplete.
-
-</details>
-
 ---
 
 ## Use Cases
 
-- **Sales Teams** - Build targeted prospect lists from Google Maps and LinkedIn
-- **Recruiters** - Find candidates by job title and location
-- **Agencies** - Generate leads for clients across industries
-- **Startups** - Bootstrap customer outreach without expensive tools
-- **Freelancers** - Find clients in specific niches
-- **Real Estate** - Find property managers and agents
-- **B2B Sales** - Target decision-makers by company and role
+| Industry | Application |
+|----------|-------------|
+| Sales Teams | Build targeted prospect lists from Google Maps and LinkedIn |
+| Recruiters | Find candidates by job title and location |
+| Agencies | Generate leads for clients across industries |
+| Startups | Bootstrap customer outreach without expensive tools |
+| Freelancers | Find clients in specific niches |
+| Real Estate | Find property managers and agents |
+| B2B Sales | Target decision-makers by company and role |
 
 ---
 
-## How It Compares
+## Comparison
 
-| Feature | Outreach CRM | Apollo.io | Hunter.io | Manual Research |
-|---------|--------------|-----------|-----------|-----------------|
-| Google Maps Scraping | ✅ Built-in | ❌ No | ❌ No | ❌ Manual |
-| LinkedIn Scraping | ✅ Dual-mode | ✅ Yes | ❌ No | ❌ Manual |
-| No Login Required | ✅ Yes | ❌ No | ❌ No | ✅ Yes |
-| CRM Included | ✅ Full CRM | ✅ Yes | ❌ No | ❌ No |
-| Self-Hosted | ✅ Yes | ❌ No | ❌ No | N/A |
-| Open Source | ✅ MIT | ❌ No | ❌ No | N/A |
-| Monthly Cost | ✅ Free | ❌ $49-499+ | ❌ $49-399+ | ✅ Free |
-| Data Ownership | ✅ 100% Yours | ❌ Their Servers | ❌ Their Servers | ✅ Yours |
+| Feature | This Project | Apollo.io | Hunter.io |
+|---------|--------------|-----------|-----------|
+| Google Maps Scraping | Built-in | No | No |
+| LinkedIn Scraping | Dual-mode | Yes | No |
+| No Login Required | Yes | No | No |
+| CRM Included | Full CRM | Yes | No |
+| Self-Hosted | Yes | No | No |
+| Open Source | MIT | No | No |
+| Monthly Cost | Free | $49-499+ | $49-399+ |
+| Data Ownership | 100% Yours | Their Servers | Their Servers |
 
 ---
 
 ## Technology Stack
 
 ### Frontend
+
 | Technology | Purpose |
 |------------|---------|
-| **React 18** | Modern UI framework |
-| **TypeScript** | Type-safe development |
-| **Vite** | Fast build tool & dev server |
-| **Tailwind CSS** | Utility-first styling |
-| **shadcn/ui** | Beautiful component library |
-| **TanStack Query** | Data fetching & caching |
-| **React Router** | Client-side routing |
-| **Lucide Icons** | Icon library |
+| React 18 | UI framework |
+| TypeScript | Type-safe development |
+| Vite | Build tool and dev server |
+| Tailwind CSS | Utility-first styling |
+| shadcn/ui | Component library |
+| TanStack Query | Data fetching and caching |
+| React Router | Client-side routing |
 
 ### Backend
+
 | Technology | Purpose |
 |------------|---------|
-| **Node.js** | Runtime environment |
-| **Express.js** | Web framework |
-| **PostgreSQL** | Database |
-| **Playwright** | Browser automation for scraping |
-| **tsx** | TypeScript execution |
+| Node.js | Runtime environment |
+| Express.js | Web framework |
+| PostgreSQL | Database |
+| Playwright | Browser automation |
+| tsx | TypeScript execution |
 
 ---
 
@@ -213,12 +171,12 @@ The Google Maps scraper uses Playwright to automate searches and extract busines
 - Website URL
 - Full address
 - Coordinates (lat/lng)
-- Rating & review count
+- Rating and review count
 - Business category
 - Google Maps URL
 
 **Usage:**
-1. Go to Lead Sources → Google Maps
+1. Go to Lead Sources > Google Maps
 2. Enter business types (e.g., "Restaurants, Cafes")
 3. Enter location (e.g., "New York, NY")
 4. Set max results
@@ -241,7 +199,7 @@ Dual-mode LinkedIn scraper for finding professionals and companies.
 - Requires one-time login setup
 
 **Usage:**
-1. Go to Lead Sources → LinkedIn
+1. Go to Lead Sources > LinkedIn
 2. Choose scraping mode
 3. Select search type (People/Companies)
 4. Enter keywords and location
@@ -252,6 +210,7 @@ Dual-mode LinkedIn scraper for finding professionals and companies.
 ## CRM Capabilities
 
 ### Lead Profile
+
 Each lead includes:
 - **Contact Info** - Email, phone, website, LinkedIn URL
 - **Company Info** - Company name, job title
@@ -262,14 +221,16 @@ Each lead includes:
 - **Metadata** - Created date, last contact, source details
 
 ### Lead Actions
-- **Email** - Open email client with lead's email
-- **Call** - Click-to-call functionality
-- **SMS** - Open SMS with lead's phone
-- **LinkedIn** - Open lead's LinkedIn profile
-- **Edit** - Update lead information
-- **Delete** - Remove lead from CRM
+
+- Email - Open email client with lead's email
+- Call - Click-to-call functionality
+- SMS - Open SMS with lead's phone
+- LinkedIn - Open lead's LinkedIn profile
+- Edit - Update lead information
+- Delete - Remove lead from CRM
 
 ### Bulk Operations
+
 - Select multiple leads
 - Bulk delete
 - Bulk status update
@@ -353,25 +314,18 @@ LINKEDIN_SESSION_PATH=./linkedin-session.json
 ### Docker (Recommended)
 
 ```dockerfile
-# Dockerfile
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
 RUN npm ci
 
-# Copy source
 COPY . .
-
-# Build frontend
 RUN npm run build
 
-# Expose ports
 EXPOSE 3001
 
-# Start server
 CMD ["npm", "run", "start"]
 ```
 
@@ -469,35 +423,33 @@ npm run start
 
 ## FAQ
 
-**Q: Is this really free?**
-A: Yes! 100% free and open source under MIT license. No hidden costs, no paid tiers.
+**Is this really free?**  
+Yes. 100% free and open source under MIT license. No hidden costs.
 
-**Q: Do I need a LinkedIn account?**
-A: No! The Google-based mode works without any login. Login-based mode is optional for enhanced data.
+**Do I need a LinkedIn account?**  
+No. The Google-based mode works without any login. Login-based mode is optional.
 
-**Q: Is LinkedIn scraping legal?**
-A: We use public search engines to find public LinkedIn profiles. Always comply with LinkedIn's terms and your local laws.
+**Is LinkedIn scraping legal?**  
+We use public search engines to find public LinkedIn profiles. Always comply with LinkedIn's terms and your local laws.
 
-**Q: How many leads can I scrape?**
-A: No artificial limits. Depends on your hardware and rate limiting to avoid blocks.
+**How many leads can I scrape?**  
+No artificial limits. Depends on your hardware and rate limiting.
 
-**Q: Can I export my data?**
-A: Yes! Export to CSV or JSON from the job results.
+**Can I export my data?**  
+Yes. Export to CSV or JSON from job results.
 
-**Q: Does it work on Windows/Mac/Linux?**
-A: Yes! Node.js and PostgreSQL run on all major operating systems.
+**Does it work on Windows/Mac/Linux?**  
+Yes. Node.js and PostgreSQL run on all major operating systems.
 
-**Q: Can multiple users use this?**
-A: Currently single-user. Multi-user with authentication is on the roadmap.
-
-**Q: How do I avoid getting blocked while scraping?**
-A: The scrapers include delays between requests. For heavy use, consider rotating proxies.
+**How do I avoid getting blocked while scraping?**  
+The scrapers include delays between requests. For heavy use, consider rotating proxies.
 
 ---
 
 ## Roadmap
 
 ### v1.0 (Current)
+
 - [x] Google Maps scraper with full data extraction
 - [x] LinkedIn scraper (dual-mode)
 - [x] Lead management with status tracking
@@ -508,6 +460,7 @@ A: The scrapers include delays between requests. For heavy use, consider rotatin
 - [x] Auto-import to CRM
 
 ### v1.1 (Planned)
+
 - [ ] Email finder integration
 - [ ] Email verification
 - [ ] CSV import/export
@@ -516,22 +469,19 @@ A: The scrapers include delays between requests. For heavy use, consider rotatin
 - [ ] Advanced filtering
 
 ### v2.0 (Future)
+
 - [ ] Multi-user support with roles
 - [ ] Authentication system
 - [ ] Email sequences
 - [ ] Email tracking (opens, clicks)
 - [ ] Calendar integration
-- [ ] Mobile app
 - [ ] Webhook integrations
-- [ ] Zapier/Make integration
-
-**Have ideas?** Open an issue on [GitHub](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/issues)!
 
 ---
 
 ## Contributing
 
-We welcome contributions! Whether it's bug fixes, new features, or documentation improvements.
+We welcome contributions. Whether it's bug fixes, new features, or documentation improvements.
 
 ### Getting Started
 
@@ -550,22 +500,10 @@ We welcome contributions! Whether it's bug fixes, new features, or documentation
 - Follow existing code style
 - Update documentation for new features
 - Test your changes locally
-- Write clear commit messages
 
 ---
 
-## Support & Contact
-
-### Get Help
-
-- **GitHub Issues**: [Report bugs or request features](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/issues)
-- **GitHub Discussions**: [Ask questions & share ideas](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/discussions)
-
-### Connect
-
-- **GitHub**: [@saifullahshaukat](https://github.com/saifullahshaukat)
-
-### Troubleshooting
+## Troubleshooting
 
 **PostgreSQL connection failed?**
 ```bash
@@ -596,36 +534,11 @@ PORT=3002
 
 ## License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-You can:
-- ✅ Use commercially
-- ✅ Modify the code
-- ✅ Distribute freely
-- ✅ Use privately
-
-Just include the license notice!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Star History
+## Support
 
-If this project helps your outreach efforts, please give it a star! ⭐
-
-It helps other sales teams and developers discover it.
-
-[⭐ Star on GitHub](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation)
-
----
-
-## Ready to Scale Your Outreach?
-
-Outreach CRM is production-ready and designed to help you find leads faster. Deploy it today and take control of your prospecting!
-
-**Stop paying for expensive tools. Start owning your data.**
-
-[Get Started Now](#quick-start) | [View on GitHub](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation) | [Report Issues](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/issues)
-
----
-
-**Made with ❤️ for sales teams and growth hackers. Happy prospecting!**
+- [GitHub Issues](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/issues) - Report bugs or request features
+- [GitHub Discussions](https://github.com/saifullahshaukat/b2b-lead-finder-and-outreach-automation/discussions) - Ask questions and share ideas
