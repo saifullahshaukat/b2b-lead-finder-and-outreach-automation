@@ -157,6 +157,7 @@ export default function LinkedInSource() {
   const removeKeywordTag = (tag: string) => {
     setKeywordTags(keywordTags.filter(t => t !== tag));
   };
+const API_BASE = 'http://localhost:3001/api/v1';
 
   // Hooks
   const { data: jobs = [], isLoading, refetch } = useScraperJobs('linkedin');
@@ -168,7 +169,7 @@ export default function LinkedInSource() {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const response = await fetch('/api/v1/integrations/linkedin/session');
+        const response = await fetch(`${API_BASE}/integrations/linkedin/session`);
         const data = await response.json();
         setLinkedInSession(data);
       } catch (error) {

@@ -1,7 +1,7 @@
 // Unified Scraper API Service
 // This service communicates with the integrated Node.js backend
 
-const API_BASE = '/api/v1';
+const API_BASE = 'http://localhost:3001/api/v1';
 
 export type ScraperType = 'google_maps' | 'linkedin' | 'csv' | 'website' | 'api';
 
@@ -187,7 +187,7 @@ class ScraperService {
 
   async healthCheck(): Promise<boolean> {
     try {
-      const response = await fetch('/api/health');
+      const response = await fetch(`${API_BASE}/health`);
       return response.ok;
     } catch {
       return false;

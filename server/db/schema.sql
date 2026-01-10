@@ -211,6 +211,85 @@ CREATE INDEX idx_outreach_events_lead_id ON outreach_events(lead_id);
 CREATE INDEX idx_outreach_events_created_at ON outreach_events(created_at DESC);
 
 -- ============================================
+-- EMAIL OUTREACH TABLES
+-- ============================================
+
+-- Email Credentials (SMTP settings)
+CREATE TABLE email_credentials (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    smtp_server VARCHAR(255) NOT NULL DEFAULT 'smtp.gmail.com',
+    smtp_port INTEGER NOT NULL DEFAULT 587,
+    is_default BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Email Outreach Queue
+CREATE TABLE email_outreach (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) NOT NULL,
+    lead_id UUID REFERENCES leads(id) ON DELETE SET NULL,
+    subject VARCHAR(500),
+    message TEXT,
+    status VARCHAR(50) DEFAULT 'pending',
+    sent_at TIMESTAMP WITH TIME ZONE,
+    error_message TEXT,
+    custom_fields JSONB DEFAULT '{}',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX idx_email_outreach_status ON email_outreach(status);
+CREATE INDEX idx_email_outreach_email ON email_outreach(email);
+CREATE INDEX idx_email_outreach_created_at ON email_outreach(created_at DESC);
+
+-- ============================================
+-- WEB FORM OUTREACH TABLES
+-- ============================================
+
+-- Web Form Outreach Configuration
+CREATE TABLE webform_config (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(255),
+    company VARCHAR(255),
+    subject VARCHAR(500),
+    message TEXT,
+    delay_between_requests INTEGER DEFAULT 3,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Web Form Outreach Jobs
+CREATE TABLE webform_jobs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    url TEXT NOT NULL,
+    lead_id UUID REFERENCES leads(id) ON DELETE SET NULL,
+    status VARCHAR(50) DEFAULT 'pending',
+    form_found BOOLEAN DEFAULT FALSE,
+    error_message TEXT,
+    submitted_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX idx_webform_jobs_status ON webform_jobs(status);
+CREATE INDEX idx_webform_jobs_created_at ON webform_jobs(created_at DESC);
+
+-- Trigger for webform_jobs updated_at
+CREATE TRIGGER update_webform_jobs_updated_at
+    BEFORE UPDATE ON webform_jobs
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Trigger for webform_config updated_at
+CREATE TRIGGER update_webform_config_updated_at
+    BEFORE UPDATE ON webform_config
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- ============================================
 -- INBOX / CONVERSATIONS
 -- ============================================
 
@@ -272,6 +351,48 @@ CREATE TABLE integrations (
     last_tested_at TIMESTAMP WITH TIME ZONE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- ============================================
+-- EMAIL CREDENTIALS
+-- ============================================
+
+CREATE TABLE email_credentials (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(500) NOT NULL,
+    smtp_server VARCHAR(255) NOT NULL,
+    smtp_port INTEGER NOT NULL,
+    is_default BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- ============================================
+-- EMAIL TEMPLATES
+-- ============================================
+
+-- Already exists in outreach_templates, but adding specific email template support
+
+-- ============================================
+-- EMAIL OUTREACH
+-- ============================================
+
+CREATE TABLE email_outreach (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) NOT NULL,
+    lead_id UUID REFERENCES leads(id) ON DELETE SET NULL,
+    subject VARCHAR(500),
+    message TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'pending', -- pending, sent, failed
+    sent_at TIMESTAMP WITH TIME ZONE,
+    error_message TEXT,
+    custom_fields JSONB DEFAULT '{}',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX idx_email_outreach_status ON email_outreach(status);
+CREATE INDEX idx_email_outreach_lead_id ON email_outreach(lead_id);
+CREATE INDEX idx_email_outreach_created_at ON email_outreach(created_at DESC);
 
 -- ============================================
 -- SAVED VIEWS

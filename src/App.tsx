@@ -14,6 +14,7 @@ import WebsiteSource from "@/pages/sources/WebsiteSource";
 import APISource from "@/pages/sources/APISource";
 import OutreachPage from "@/pages/OutreachPage";
 import EmailOutreach from "@/pages/outreach/EmailOutreach";
+import WebFormOutreach from "@/pages/outreach/WebFormOutreach";
 import SMSOutreach from "@/pages/outreach/SMSOutreach";
 import ChannelPlaceholder from "@/pages/outreach/ChannelPlaceholder";
 import WorkflowsPage from "@/pages/WorkflowsPage";
@@ -95,12 +96,7 @@ const App = () => (
               />
               <Route
                 path="forms"
-                element={
-                  <ChannelPlaceholder
-                    channel="Web Forms"
-                    description="Automate website contact form submissions"
-                  />
-                }
+                element={<WebFormOutreach />}
               />
             </Route>
             <Route
